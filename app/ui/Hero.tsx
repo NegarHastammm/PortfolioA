@@ -46,13 +46,17 @@ export default function Hero() {
             </motion.div>
 
             {/* تیتر اصلی */}
-            <motion.h1 variants={itemVariants} className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white leading-tight mb-6">
-              {t.hero.title}{" "}
-              <br className="hidden lg:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400">
-                {t.hero.role}
-              </span>
-            </motion.h1>
+       <motion.h1
+  variants={itemVariants}
+  className="text-4xl md:text-6xl font-black text-slate-900 dark:text-white leading-tight mb-6"
+>
+  {t.hero.titleStart}{" "}
+  <br className="hidden lg:block" />
+  <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600 dark:from-indigo-400 dark:to-purple-400">
+    {t.hero.titleEnd}
+  </span>
+</motion.h1>
+
 
             {/* توضیحات */}
             <motion.p variants={itemVariants} className="text-lg text-slate-600 dark:text-slate-300 mb-8 leading-relaxed">
@@ -65,7 +69,7 @@ export default function Hero() {
                 href="#projects"
                 className="group w-full sm:w-auto px-8 py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full font-bold transition-all shadow-lg shadow-indigo-500/30 flex items-center justify-center gap-2"
               >
-                {t.hero.ctaProject}
+               <button>{t.hero.ctaProjects}</button>
                 {isRTL ? <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform" /> : <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />}
               </a>
 
@@ -73,7 +77,7 @@ export default function Hero() {
                 href="/images/نگار_شاه حسینی-fa-1.pdf"
                 className="group w-full sm:w-auto px-8 py-3.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-indigo-500 dark:hover:border-indigo-500 rounded-full font-bold transition-all flex items-center justify-center gap-2"
               >
-                {t.hero.ctaResume}
+                <button>{t.hero.ctaResume}</button>
                 <Download size={18} className="group-hover:translate-y-1 transition-transform" />
               </a>
             </motion.div>

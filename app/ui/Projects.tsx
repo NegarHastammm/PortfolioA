@@ -54,9 +54,10 @@ export default function Projects() {
             {t.title}
           </h2>
            <div className="h-1 w-20 bg-blue-600 mx-auto rounded-full"></div>
-          <p className="text-[var(--foreground)] opacity-80 max-w-2xl mx-auto">
-            {t.description || (language === "en" ? "Here are some of my recent works." : "در اینجا برخی از کارهای اخیر من را مشاهده می‌کنید.")}
-          </p>
+         <p className="text-[var(--foreground)] opacity-80 max-w-2xl mx-auto">
+  {t.subtitle}
+</p>
+
         </div>
 
         {/* گرید کارت‌ها */}
