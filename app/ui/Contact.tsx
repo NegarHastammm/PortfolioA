@@ -1,175 +1,174 @@
 "use client";
 
-import React, { useState } from "react";
-// اگر ارور Module not found دارید، خط زیر را به ../../context/LanguageContext تغییر دهید
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Mail, MapPin, Phone, Send, Loader2 } from "lucide-react";
 import { useLanguage } from "../Context/LanguageContext";
-import { FaEnvelope, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 
 export default function Contact() {
-  const { t, language } = useLanguage();
-  
-  // استیت‌های فرم
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-  const [status, setStatus] = useState<"idle" | "submitting" | "success">("idle");
+  const { t } = useLanguage();
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-  // هندل کردن تغییر فیلدها
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  // شبیه‌سازی ارسال فرم (چون بک‌اند نداریم)
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus("submitting");
-
-    // بعد از 2 ثانیه پیام موفقیت نشان می‌دهد
+    setStatus("loading");
+    
+    // شبیه‌سازی ارسال فرم (بعداً می‌توانید به API واقعی وصل کنید)
     setTimeout(() => {
       setStatus("success");
       setFormData({ name: "", email: "", message: "" });
-      
-      // بعد از 3 ثانیه دکمه به حالت اول برمی‌گردد
       setTimeout(() => setStatus("idle"), 3000);
     }, 2000);
   };
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   return (
-    <section id="contact" className="py-20 bg-gray-50 dark:bg-slate-900 transition-colors duration-300">
-      <div className="container mx-auto px-6 max-w-5xl">
+    <section id="contact" className="py-20 bg-slate-50 dark:bg-slate-950 transition-colors duration-300">
+      <div className="container mx-auto px-6">
         
-        {/* هدر بخش تماس */}
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white mb-4">
-            {t.contact.title}
+        {/* هدر بخش */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-800 dark:text-white mb-4">
+            {t.contact?.title || "Get In Touch"}
           </h2>
-          <p className="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            {t.contact.description}
+          <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+            {t.contact?.title || "Have a project in mind or want to say hi? Feel free to send me a message."}
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
           
-          {/* ستون اطلاعات تماس */}
-          <div className="space-y-8">
-            <h3 className="text-2xl font-semibold text-gray-800 dark:text-white">
-              {language === 'fa' ? 'راه‌های ارتباطی' : 'Get in Touch'}
-            </h3>
-            <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
-              {language === 'fa' 
-                ? 'من همیشه مشتاق شنیدن نظرات شما یا بحث درباره پروژه‌های جدید هستم. از طریق فرم یا شبکه‌های اجتماعی با من در ارتباط باشید.'
-                : 'I am always open to discussing new projects, creative ideas or opportunities to be part of your visions.'}
-            </p>
-
+          {/* اطلاعات تماس */}
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="space-y-8"
+          >
             {/* کارت ایمیل */}
-            <div className="flex items-center gap-4 p-4 bg-white dark:bg-slate-800 rounded-lg shadow-sm">
-              <div className="p-3 bg-blue-100 dark:bg-blue-900 rounded-full text-blue-600 dark:text-blue-300">
-                <FaEnvelope size={24} />
+            <div className="flex items-start gap-4 p-6 rounded-2xl bg-white dark:bg-slate-900 shadow-sm border border-slate-100 dark:border-slate-800 hover:border-indigo-500 transition-all group">
+              <div className="p-3 rounded-full bg-indigo-50 dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 group-hover:scale-110 transition-transform">
+                <Mail size={24} />
               </div>
               <div>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Email</p>
-                <a href="mailto:your.email@example.com" className="text-gray-800 dark:text-white font-medium hover:text-blue-600 transition">
-                  your.email@example.com
-                </a>
+                <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-1">Email</h3>
+                <p className="text-slate-600 dark:text-slate-400">negaar.shnh22781@gmail.com</p>
               </div>
             </div>
 
-            {/* آیکون‌های شبکه اجتماعی */}
-            <div className="flex gap-4 mt-6">
-              <SocialLink href="https://github.com" icon={<FaGithub />} />
-              <SocialLink href="https://linkedin.com" icon={<FaLinkedin />} />
-              <SocialLink href="https://twitter.com" icon={<FaTwitter />} />
+            {/* کارت تلفن */}
+            <div className="flex items-start gap-4 p-6 rounded-2xl bg-white dark:bg-slate-900 shadow-sm border border-slate-100 dark:border-slate-800 hover:border-indigo-500 transition-all group">
+              <div className="p-3 rounded-full bg-indigo-50 dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 group-hover:scale-110 transition-transform">
+                <Phone size={24} />
+              </div>
+              <div>
+                <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-1">Phone</h3>
+                <p className="text-slate-600 dark:text-slate-400">+98 912 345 6789</p>
+              </div>
             </div>
-          </div>
 
-          {/* ستون فرم تماس */}
-          <div className="bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-lg border border-gray-100 dark:border-slate-700">
+            {/* کارت موقعیت */}
+            <div className="flex items-start gap-4 p-6 rounded-2xl bg-white dark:bg-slate-900 shadow-sm border border-slate-100 dark:border-slate-800 hover:border-indigo-500 transition-all group">
+              <div className="p-3 rounded-full bg-indigo-50 dark:bg-slate-800 text-indigo-600 dark:text-indigo-400 group-hover:scale-110 transition-transform">
+                <MapPin size={24} />
+              </div>
+              <div>
+                <h3 className="text-lg font-bold text-slate-800 dark:text-white mb-1">Location</h3>
+                <p className="text-slate-600 dark:text-slate-400">Tehran, Iran</p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* فرم تماس */}
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="bg-white dark:bg-slate-900 p-8 rounded-3xl shadow-lg border border-slate-100 dark:border-slate-800"
+          >
             <form onSubmit={handleSubmit} className="space-y-6">
               
-              {/* فیلد نام */}
+              {/* ورودی نام */}
               <div>
-                <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  {t.contact.title}
+                <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                  {t.contact?.nameLabel || "Name"}
                 </label>
                 <input
                   type="text"
-                  id="name"
                   name="name"
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-slate-900 border border-gray-300 dark:border-slate-600 focus:ring-2 focus:ring-blue-500 outline-none transition text-gray-900 dark:text-white"
+                  className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
+                  placeholder="John Doe"
                 />
               </div>
 
-              {/* فیلد ایمیل */}
+              {/* ورودی ایمیل */}
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  {t.contact.emailLabel}
+                <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                  {t.contact?.emailLabel || "Email"}
                 </label>
                 <input
                   type="email"
-                  id="email"
                   name="email"
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-slate-900 border border-gray-300 dark:border-slate-600 focus:ring-2 focus:ring-blue-500 outline-none transition text-gray-900 dark:text-white"
+                  className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
+                  placeholder="john@example.com"
                 />
               </div>
 
-              {/* فیلد پیام */}
+              {/* ورودی پیام */}
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                  {t.contact.messageLabel || "Message"}
+                <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
+                  {t.contact?. successMessage || "Message"}
                 </label>
                 <textarea
-                  id="message"
                   name="message"
-                  rows={4}
                   required
+                  rows={4}
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-slate-900 border border-gray-300 dark:border-slate-600 focus:ring-2 focus:ring-blue-500 outline-none transition text-gray-900 dark:text-white resize-none"
+                  className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all resize-none"
+                  placeholder="Your message here..."
                 ></textarea>
               </div>
 
               {/* دکمه ارسال */}
               <button
                 type="submit"
-                disabled={status === "submitting" || status === "success"}
-                className={`w-full py-3 px-6 rounded-lg font-bold text-white transition-all duration-300 transform hover:scale-[1.02]
-                  ${status === "success" 
-                    ? "bg-green-500 hover:bg-green-600" 
-                    : "bg-blue-600 hover:bg-blue-700 dark:bg-blue-500 dark:hover:bg-blue-600"
-                  } disabled:opacity-70 disabled:cursor-not-allowed`}
+                disabled={status === "loading" || status === "success"}
+                className={`w-full py-4 rounded-xl font-bold text-white transition-all flex items-center justify-center gap-2 ${
+                  status === "success" 
+                    ? "bg-green-600 hover:bg-green-700" 
+                    : "bg-indigo-600 hover:bg-indigo-700 shadow-lg shadow-indigo-500/30"
+                }`}
               >
-                {status === "submitting" 
-                  ? (language === 'fa' ? "در حال ارسال..." : "Sending...") 
-                  : status === "success" 
-                    ? (language === 'fa' ? "پیام ارسال شد ✓" : "Message Sent ✓")
-                    : t.contact. successMessage}
+                {status === "loading" ? (
+                  <Loader2 className="animate-spin" size={20} />
+                ) : status === "success" ? (
+                  "Message Sent!"
+                ) : (
+                  <>
+                    {t.contact?.sendButton || "Send Message"} <Send size={18} />
+                  </>
+                )}
               </button>
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
-  );
-}
-
-// کامپوننت کمکی برای آیکون‌های اجتماعی
-function SocialLink({ href, icon }: { href: string; icon: React.ReactNode }) {
-  return (
-    <a 
-      href={href} 
-      target="_blank" 
-      rel="noopener noreferrer"
-      className="p-3 bg-gray-200 dark:bg-slate-700 text-gray-700 dark:text-gray-300 rounded-full hover:bg-blue-600 hover:text-white dark:hover:bg-blue-500 transition-all duration-300"
-    >
-      {icon}
-    </a>
   );
 }
