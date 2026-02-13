@@ -3,15 +3,16 @@
 
 import React, { createContext, useContext, useState, useEffect } from "react";
 import { dictionary } from "../lib/dictionary";
-
-type Language = "fa" | "en";
+export type TranslationType = typeof dictionary.en;
+export type Language = "en" | "fa";
 
 interface LanguageContextType {
   language: Language;
   toggleLanguage: () => void;
-  t: typeof dictionary.fa; // تایپ‌اسکریپت هوشمند برای کلمات
+  t: TranslationType;
   dir: "rtl" | "ltr";
 }
+
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
