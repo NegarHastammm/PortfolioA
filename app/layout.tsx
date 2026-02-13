@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 
 import "./globals.css";
-import { ThemeProvider } from "./Context/ThemeContext";
+
 import { LanguageProvider } from "./Context/LanguageContext";
 import Header from "./ui/Header";
-
+import { ThemeProvider } from "./components/providers";
 
 
 export const metadata: Metadata = {
@@ -21,7 +21,11 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body >
         <LanguageProvider>
-          <ThemeProvider>
+          <ThemeProvider
+              attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange>
             <Header />
             <main className="min-h-screen pt-24">
               {children}

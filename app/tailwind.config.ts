@@ -1,10 +1,7 @@
-
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  // این خط حیاتی است:
-  darkMode: "class", 
-  
+  darkMode: "class", // <--- این خط بسیار مهم است
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -12,10 +9,10 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-      },
+        // ... تنظیمات قبلی شما
+        fontFamily: {
+            shabnam: ['var(--font-shabnam)'], // اگر فونت فارسی دارید
+        }
     },
   },
   plugins: [],

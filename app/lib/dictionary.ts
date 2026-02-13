@@ -4,14 +4,14 @@
 export const dictionary = {
   fa: {
     header: {
-      home: "خانه",
-      projects: "پروژه‌ها",
+       home: "خانه",
       about: "درباره من",
-      contact: "تماس",
+      projects: "پروژه‌ها",
+      contact: "تماس با من",
       resume: "رزومه",
     },
     hero: {
-      greeting: "👋 به پورتفولیوی من خوش آمدید",
+      greeting: " به پورتفولیوی من خوش آمدید",
       titleStart: "خلق تجربه‌های",
       titleEnd: "دیجیتال و مدرن",
       description: "من توسعه‌دهنده فرانت‌اند هستم که با تمرکز بر Next.js و Tailwind، رابط‌های کاربری زیبا، سریع و تعاملی می‌سازم.",
@@ -27,7 +27,7 @@ export const dictionary = {
     },
         about: {
       title: "درباره من",
-      description: "من یک توسعه‌دهنده فول‌استک مشتاق با تجربه در ساخت وب‌اپلیکیشن‌ها با استفاده از React، Next.js و Node.js هستم. من عاشق یادگیری تکنولوژی‌های جدید و حل مسائل پیچیده هستم.",
+      description: "من یک توسعه‌دهنده فرانت اند مشتاق با تجربه در ساخت وب‌اپلیکیشن‌ها با استفاده از Nex و Next.js   هستم. من عاشق یادگیری تکنولوژی‌های جدید و حل مسائل پیچیده هستم.",
       skillsTitle: "تکنولوژی‌های من",
       years: "سال تجربه",
       projects: "پروژه تکمیل شده"
@@ -60,12 +60,12 @@ export const dictionary = {
       resume: "Resume",
     },
     hero: {
-      greeting: "👋 Welcome to my portfolio",
-      titleStart: "Building Modern",
-      titleEnd: "Digital Experiences",
-      description: "I am a Frontend Developer focusing on Next.js and Tailwind to build beautiful, fast, and interactive user interfaces.",
-      ctaProjects: "View Projects",
-      ctaResume: "Download Resume",
+       greeting: "Hello, I'm a Developer ",
+      title: "Welcome to My Portfolio",
+      highlight: "Digital World",
+      description: "I build accessible, pixel-perfect, and performant web experiences.",
+      cta: "View Projects",
+      contact: "Contact Me"
     },
     projects: {
       title: "Featured Projects",

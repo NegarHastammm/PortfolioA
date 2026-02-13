@@ -23,38 +23,47 @@
 }
 
 /* 2. تعریف متغیرهای رنگی برای لایت و دارک مود */
+
+@tailwind utilities;
+
+/* تعریف متغیرها برای حالت لایت (پیش‌فرض) */
 :root {
-  /* لایت مود */
-  --bg-main: #ffffff;
-  --text-main: #171717;
-  --bg-card: #f3f4f6; /* خاکستری روشن برای کارت‌ها */
-  --bg-header: rgba(255, 255, 255, 0.8);
+  --background: #ffffff;
+  --foreground: #171717;
+  --border: #e5e7eb;
+  --primary: #2563eb; /* آبی */
+  --secondary: #9333ea; /* بنفش */
+  --muted: #f3f4f6;
 }
 
+/* تعریف متغیرها برای حالت دارک */
+/* وقتی کلاس dark به تگ html اضافه شود، این متغیرها فعال می‌شوند */
 .dark {
-  /* دارک مود */
-  --bg-main: #0a0a0a;
-  --text-main: #ededed;
-  --bg-card: #1f2937; /* خاکستری تیره برای کارت‌ها */
-  --bg-header: rgba(10, 10, 10, 0.8);
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --border: #262626;
+  --primary: #3b82f6;
+  --secondary: #a855f7;
+  --muted: #171717;
 }
 
 body {
-  background-color: var(--bg-main);
-  color: var(--text-main);
+  /* اعمال رنگ‌ها به کل بدنه سایت */
+  background-color: var(--background);
+  color: var(--foreground);
+  
+  /* انیمیشن نرم برای تغییر تم */
   transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: var(--font-inter), sans-serif;
 }
 
-/* این کلاس را به کارت‌های پروژه‌ها می‌دهیم */
-.theme-card {
-  background-color: var(--bg-card);
-  color: var(--text-main);
-  transition: background-color 0.3s ease;
+/* اگر فونت فارسی دارید، برای حالت RTL اعمال شود */
+[dir="rtl"] body {
+  font-family: var(--font-vazir), sans-serif;
 }
 
-/* این کلاس را به هدر می‌دهیم */
-.theme-header {
-  background-color: var(--bg-header);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+/* استایل‌های کمکی */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
 }

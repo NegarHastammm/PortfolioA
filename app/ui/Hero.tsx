@@ -70,7 +70,7 @@ export default function Hero() {
               </a>
 
               <a
-                href="/resume.pdf"
+                href="/images/نگار_شاه حسینی-fa-1.pdf"
                 className="group w-full sm:w-auto px-8 py-3.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 hover:border-indigo-500 dark:hover:border-indigo-500 rounded-full font-bold transition-all flex items-center justify-center gap-2"
               >
                 {t.hero.ctaResume}

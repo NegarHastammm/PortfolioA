@@ -12,9 +12,9 @@ export default function About() {
   // لیست مهارت‌ها (می‌توانید تغییر دهید)
   const skills = [
     { name: "Frontend", icon: <Layout className="text-blue-500" />, items: "React, Next.js, Tailwind" },
-    { name: "Backend", icon: <Server className="text-green-500" />, items: "Node.js, Express, Python" },
-    { name: "Database", icon: <Database className="text-purple-500" />, items: "PostgreSQL, MongoDB" },
-    { name: "Tools", icon: <Code2 className="text-orange-500" />, items: "Git, Docker, Vercel" },
+
+   
+    { name: "Tools", icon: <Code2 className="text-orange-500" />, items: "Git" },
   ];
 
   return (
@@ -38,11 +38,11 @@ export default function About() {
             
             <div className="flex gap-8 mt-8">
               <div>
-                <span className="block text-3xl font-bold text-blue-600">3+</span>
+                <span className="block text-3xl font-bold text-blue-600">1+</span>
                 <span className="text-sm text-gray-500 dark:text-gray-400">{t.years}</span>
               </div>
               <div>
-                <span className="block text-3xl font-bold text-blue-600">20+</span>
+                <span className="block text-3xl font-bold text-blue-600">2+</span>
                 <span className="text-sm text-gray-500 dark:text-gray-400">{t.projects}</span>
               </div>
             </div>

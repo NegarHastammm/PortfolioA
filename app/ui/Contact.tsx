@@ -19,9 +19,11 @@ export default function Contact() {
       <div className="container mx-auto px-6">
         
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[var(--foreground)]">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-[var(--foreground)]">
             {t.title}
           </h2>
+           <div className="h-1 w-20 bg-blue-600 mx-auto rounded-full"></div>
+        
           <p className="text-gray-600 dark:text-gray-400">{t.desc}</p>
         </div>
 
@@ -35,7 +37,7 @@ export default function Contact() {
               </div>
               <div>
                 <h3 className="font-bold text-lg mb-1 text-[var(--foreground)]">{t.info.email}</h3>
-                <p className="text-gray-600 dark:text-gray-400">contact@example.com</p>
+                <p className="text-gray-600 dark:text-gray-400">negaar.shnh22781@gmail.com</p>
               </div>
             </div>
 

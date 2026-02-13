@@ -5,8 +5,8 @@ import Link from "next/link";
 import { useTheme } from "next-themes";
 import { Menu, X, Sun, Moon, Github, Languages } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useLanguage } from "../Context/LanguageContext"; // استفاده از هوک زبان
-
+import { useLanguage } from "../Context/LanguageContext";// استفاده از هوک زبان
+import ThemeToggle from "./ThemeToggle";
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
@@ -136,11 +136,13 @@ export default function Header() {
                     >
                         {mounted && theme === "dark" ? <Sun size={20} /> : <Moon size={20} />}
                     </button>
+                    <ThemeToggle />
                 </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+      
     </header>
   );
 }
