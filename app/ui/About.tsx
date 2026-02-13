@@ -39,11 +39,11 @@ export default function About() {
             <div className="flex gap-8 mt-8">
               <div>
                 <span className="block text-3xl font-bold text-blue-600">1+</span>
-                <span className="text-sm text-gray-500 dark:text-gray-400">{t.years}</span>
+                <span className="text-sm text-gray-500 dark:text-gray-400">{t.experience}</span>
               </div>
               <div>
                 <span className="block text-3xl font-bold text-blue-600">2+</span>
-                <span className="text-sm text-gray-500 dark:text-gray-400">{t.projects}</span>
+                <span className="text-sm text-gray-500 dark:text-gray-400">{t.projectsCompleted}</span>
               </div>
             </div>
           </div>

@@ -55,7 +55,7 @@ export default function Projects() {
           </h2>
            <div className="h-1 w-20 bg-blue-600 mx-auto rounded-full"></div>
          <p className="text-[var(--foreground)] opacity-80 max-w-2xl mx-auto">
-  {t.subtitle}
+  {t.title}
 </p>
 
         </div>
