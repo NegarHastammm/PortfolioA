@@ -17,10 +17,11 @@ export default function Header() {
 
   useEffect(() => setMounted(true), []);
 
-  const menuItems = [
-    { title: t.nav?.about || "About", href: "#about" }, 
-    { title: t.nav?.projects || "Projects", href: "#projects" },
-    { title: t.nav?.contact || "Contact", href: "#contact" },
+ const menuItems = [
+    // اصلاح: استفاده از t.header به جای t.nav
+    { title: t.header?.about || "About", href: "#about" },
+    { title: t.header?.projects || "Projects", href: "#projects" },
+    { title: t.header?.contact || "Contact", href: "#contact" },
   ];
 
   return (
